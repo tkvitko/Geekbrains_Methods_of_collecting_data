@@ -1,1 +1,1 @@
-{"response":{"count":9,"items":[34815360,41002749,50023209,37684434,60441836,170110668,95248950,73539507,41251833]}}
+{"error":{"error_code":5,"error_msg":"User authorization failed: invalid access_token (4).","request_params":[{"key":"v","value":"5.52"},{"key":"method","value":"groups.get"},{"key":"oauth","value":"1"}]}}
