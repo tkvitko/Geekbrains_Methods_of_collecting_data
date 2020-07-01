@@ -26,18 +26,21 @@ def salary_parser(salary_string):
     salary_from, salary_to, salary_currency = None, None, None
 
     if words:
-        if len(words) > 2:
+        if len(words) == 2:
+            if words.count('по') != 0:
+                pass
+            else:
+                salary_currency = words[1]
+                salary_from = int(words[0])
+        elif len(words) == 3:
             salary_currency = words[2]
-
-        if words.count('от') != 0:
-            salary_from = int(words[1])
-        elif words.count('до') != 0:
-            salary_to = int(words[1])
-        elif words.count('по') != 0:
-            pass
-        else:
-            salary_from = int(words[0])
-            salary_to = int(words[1])
+            if words.count('от') != 0:
+                salary_from = int(words[1])
+            elif words.count('до') != 0:
+                salary_to = int(words[1])
+            else:
+                salary_from = int(words[0])
+                salary_to = int(words[1])
 
     return salary_from, salary_to, salary_currency
 
