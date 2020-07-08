@@ -74,10 +74,9 @@ while True:
 
 # Сбор информации из писем
 letters_count = 0
-for url in letters_urls_list[:4]:  # для проверки выставлено ограничение в 2 письма
+for url in letters_urls_list[:4]:  # для проверки выставлено ограничение в несколько писем
     driver.get(url)
     letter_data = {}
-    #    letter_data['_id'] = url
     # Отправитель
     elem = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, 'letter-contact'))
@@ -100,4 +99,4 @@ for url in letters_urls_list[:4]:  # для проверки выставлен�
     letter_data['body'] = elem.text
     letters_count += save_data_to_db(letter_data)
 
-print(f'Добавлено писем в БД: {letters_count}')
+print(f'Проанализировано писем: {letters_count}')
