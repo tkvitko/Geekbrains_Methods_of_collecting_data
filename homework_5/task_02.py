@@ -35,8 +35,8 @@ driver.get(base_url)
 
 items_list = []
 items_count = 0
-while True:
 
+while True:
     names = driver.find_elements_by_xpath("//*[contains(text(),'Хиты продаж')]/ancestor::div[@class='section']//li//h4")
     prices = driver.find_elements_by_xpath(
         "//*[contains(text(),'Хиты продаж')]/ancestor::div[@class='section']//li//div[@class='c-pdp-price__current']")
