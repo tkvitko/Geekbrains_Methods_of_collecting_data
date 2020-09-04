@@ -37,11 +37,11 @@ class InstagramSpider(scrapy.Spider):
         if j_body['authenticated']:  # Проверяем ответ после авторизации
             for user in self.parse_user:
                 yield response.follow(
-                # Переходим на желаемую страницу пользователя. Сделать цикл для кол-ва пользователей больше 2-ух
-                f'/{user}',
-                callback=self.user_subscriptions_parse,
-                cb_kwargs={'username': user}
-            )
+                    # Переходим на желаемую страницу пользователя. Сделать цикл для кол-ва пользователей больше 2-ух
+                    f'/{user}',
+                    callback=self.user_subscriptions_parse,
+                    cb_kwargs={'username': user}
+                )
 
     # Функция парсинга подписок пользователя
     def user_subscriptions_parse(self, response: HtmlResponse, username):
@@ -77,7 +77,7 @@ class InstagramSpider(scrapy.Spider):
         subscriptions = j_data.get('data').get('user').get('edge_follow').get('edges')  # Подписки
         for subscription in subscriptions:  # Перебираем посты, собираем данные
             item = InstaparserItem(
-                user_id = user_id,
+                user_id=user_id,
                 subscription_id=subscription['node']['id'],
                 subscription_name=subscription['node']['username'],
                 subscription_photo=subscription['node']['profile_pic_url'],
